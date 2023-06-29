@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #f0c5c5;
+            color: #4c9cc4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+           padding: 20px;
+        }
+        
+        input{
+            background-color: #4c9cc4;
+        }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label>
+        from
+        <input type="number" max="0" min="-10" value="-6" id="from_range" />
+      </label>
+      <label>
+        to
+        <input type="number" max="10" min="0" value="6" id="to_range" />
+      </label>
+      <label>
+        step
+        <input type="number" min="0.1" value="1"  id="step" />
+      </label>
+      <button id="button">Count</button>
+    </div>
+    <ul id="list">
+
+    </ul>
+    <script>
+      const fromRange = document.querySelector("#from_range");
+      const toRange = document.querySelector("#to_range");
+      const stepInput = document.querySelector("#step");      
+      const list = document.querySelector("#list");
+      const button = document.querySelector("#button");
+
+      button.addEventListener("click",()=>{
+        list.innerHTML = ""
+        for (let x = parseFloat(fromRange.value); x < parseFloat(toRange.value)+(parseFloat(stepInput.value)/2); x+=parseFloat(stepInput.value)) {
+          const li = document.createElement("li");
+          if (x < 0) {
+          li.innerText = (Math.exp ** 3) - (Math.sin(x));
+
+        } else if (x == 0) {
+          li.innerText = 89;
+
+        } else {
+          li.innerText = (Math.log(x)) + (Math.sqrt(2 * x));
+        }
+          list.appendChild(li)
+        }
+      })
+    </script>
+  </body>
+</html>
